@@ -26,14 +26,15 @@ def part1():
         newStart = start
 
         while newStart <= end:
-            if (len(str(newStart)) % 2) != 0:
+            newStartLength = len(str(newStart))
+            if (newStartLength % 2) != 0:
                 if (len(str(end)) % 2 != 0):
                     break
                 else:
-                    newStart += (10 ** (len(str(newStart)))) - newStart
+                    newStart += (10 ** (newStartLength)) - newStart
                     continue
-            firstHalf = int(str(newStart)[0:len(str(newStart))//2])
-            secondHalf = int(str(newStart)[len(str(newStart))//2:])
+            firstHalf = int(str(newStart)[0:newStartLength//2])
+            secondHalf = int(str(newStart)[newStartLength//2:])
             if firstHalf == secondHalf:
                 print(f"Found: {newStart}")
                 result += newStart
