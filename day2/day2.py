@@ -20,9 +20,6 @@ def part1():
             start = 10
             startStr = str(start)
 
-        startMidpoint = startLength // 2 if startLength > 1 else 1
-        endMidpoint = endLength // 2 if endLength > 1 else 1
-
         newStart = start
 
         while newStart <= end:
