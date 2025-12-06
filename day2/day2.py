@@ -23,16 +23,6 @@ def part1():
         startMidpoint = startLength // 2 if startLength > 1 else 1
         endMidpoint = endLength // 2 if endLength > 1 else 1
 
-        startFirstHalf = int(startStr[0:startMidpoint])
-        startSecondHalf = int(startStr[startMidpoint:])
-        endFirstHalf = int(endStr[0:endMidpoint])
-        endSecondHalf = int(endStr[endMidpoint:])
-        num_invalid_ids = endFirstHalf - startFirstHalf + 1
-        if endFirstHalf > endSecondHalf:
-            num_invalid_ids -= 1
-        if startFirstHalf < startSecondHalf:
-            num_invalid_ids -= 1
-
         newStart = start
 
         while newStart <= end:
