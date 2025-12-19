@@ -29,36 +29,58 @@ def is_repeated_pattern_multiple_times(num_str):
     
     return False
 
-def solve_part1(ranges):
-    """Solve part 1: find numbers that are patterns repeated exactly twice."""
+def solve_part1_detailed(ranges):
+    """Solve part 1 with detailed output."""
     total = 0
+    
+    print("Part 1 - Finding patterns repeated exactly twice:")
+    print("=" * 50)
     
     for range_str in ranges:
         start_str, end_str = range_str.split('-')
         start = int(start_str)
         end = int(end_str)
         
+        invalid_ids = []
         for num in range(start, end + 1):
             num_str = str(num)
             if is_repeated_pattern_twice(num_str):
+                invalid_ids.append(num)
                 total += num
+        
+        if invalid_ids:
+            print(f"{range_str}: {invalid_ids}")
+        else:
+            print(f"{range_str}: no invalid IDs")
     
+    print(f"\nTotal: {total}")
     return total
 
-def solve_part2(ranges):
-    """Solve part 2: find numbers that are patterns repeated at least twice."""
+def solve_part2_detailed(ranges):
+    """Solve part 2 with detailed output."""
     total = 0
+    
+    print("\nPart 2 - Finding patterns repeated at least twice:")
+    print("=" * 50)
     
     for range_str in ranges:
         start_str, end_str = range_str.split('-')
         start = int(start_str)
         end = int(end_str)
         
+        invalid_ids = []
         for num in range(start, end + 1):
             num_str = str(num)
             if is_repeated_pattern_multiple_times(num_str):
+                invalid_ids.append(num)
                 total += num
+        
+        if invalid_ids:
+            print(f"{range_str}: {invalid_ids}")
+        else:
+            print(f"{range_str}: no invalid IDs")
     
+    print(f"\nTotal: {total}")
     return total
 
 def main():
@@ -66,27 +88,13 @@ def main():
     test_data = read_input('base.txt')
     
     print("Testing with example data:")
-    print("Part 1 (patterns repeated exactly twice):")
-    test_result1 = solve_part1(test_data)
-    print(f"Test Result Part 1: {test_result1}")
-    print(f"Expected: 1227775554")
     print()
     
-    print("Part 2 (patterns repeated at least twice):")
-    test_result2 = solve_part2(test_data)
-    print(f"Test Result Part 2: {test_result2}")
-    print(f"Expected: 4174379265")
-    print()
+    test_result1 = solve_part1_detailed(test_data)
+    test_result2 = solve_part2_detailed(test_data)
     
-    # Solve with actual input
-    input_data = read_input('input.txt')
-    
-    print("Solving with actual input:")
-    result1 = solve_part1(input_data)
-    print(f"Part 1 Result: {result1}")
-    
-    result2 = solve_part2(input_data)
-    print(f"Part 2 Result: {result2}")
+    print(f"\nExpected Part 1: 1227775554, Got: {test_result1}")
+    print(f"Expected Part 2: 4174379265, Got: {test_result2}")
 
 if __name__ == "__main__":
     main()
